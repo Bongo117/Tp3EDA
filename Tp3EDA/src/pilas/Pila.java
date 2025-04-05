@@ -63,40 +63,26 @@ public class Pila {
         }
     }
 
-    // Método invierteSimple (Usando 2 pilas auxiliares)
-    public void invierteSimple() {
-        Pila aux1 = new Pila(tam);
-        Pila aux2 = new Pila(tam);
+    public boolean Pilaordenada(int ingreso) {
+        if (pilaLlena()) return false;
 
-        // Pasar de la pila original a aux1
-        while (!pilaVacia()) {
-            aux1.push(pop());
-        }
-
-        // Pasar de aux1 a aux2
-        while (!aux1.pilaVacia()) {
-            aux2.push(aux1.pop());
-        }
-
-        // Pasar de aux2 a la pila original (queda invertida)
-        while (!aux2.pilaVacia()) {
-            push(aux2.pop());
-        }
-    }
-
-    public void invierteEficiente() {
         Pila aux = new Pila(tam);
-        int copia;
 
-        while (!pilaVacia()) {
-            aux.push(pop()); // Mover los elementos a la pila auxiliar
-        }
-        
-        while (!aux.pilaVacia()) {
-            copia = aux.getTope() + 1;
-            push(copia);
-            aux.pop();
-        }
        
+        while (!pilaVacia() && verTope() < ingreso) {
+            aux.push(pop());
+        }
+
+       
+        push(ingreso);
+
+        while (!aux.pilaVacia()) {
+            push(aux.pop());
+        }
+
+        return true;
     }
 }
+       
+    
+

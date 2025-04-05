@@ -3,35 +3,19 @@ package pilas;
 public class Pilas {
 
     public static void main(String[] args) {
-        Pila p1 = new Pila(4);
-        Pila p2 = new Pila(4);
+        Pila pilaOrdenada = new Pila(10);
 
-        p1.push(1);
-        p1.push(2);
-        p1.push(3);
-        p1.push(4);
-        p1.mostrarPila();
-        
-        p2.push(1);
-        p2.push(2);
-        p2.push(3);
-        p2.push(4);
-        p2.mostrarPila();
-         
-        p1.invierteSimple() ;
-        System.out.println("Método con invierte simple: ");
-        p1.mostrarPila();
-          
-        p2.invierteEficiente();
-        System.out.println("Método con invierte eficiente: ");
-        p2.mostrarPila();
-      
-        /*for (int i = 0; i < 4; i++) {
-            p2.push(p1.verTope());
-            p1.pop();
-        }
-        p2.mostrarPila(); */
-       
+        pilaOrdenada.Pilaordenada(8);
+        pilaOrdenada.Pilaordenada(6);
+        pilaOrdenada.Pilaordenada(5);
+        pilaOrdenada.Pilaordenada(9);
+        pilaOrdenada.Pilaordenada(4);
+        pilaOrdenada.Pilaordenada(0);
+        pilaOrdenada.Pilaordenada(3);
+        pilaOrdenada.Pilaordenada(2);
+
+        System.out.println("Pila ordenada de menor a mayor: ");
+        pilaOrdenada.mostrarPila(); 
     }
-    
 }
+    
