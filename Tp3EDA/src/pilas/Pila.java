@@ -54,35 +54,47 @@ public class Pila {
     public void mostrarPila() {
         Pila paux = new Pila(tam);
         while (!pilaVacia()) {
-            System.out.print(verTope() + " ");
-            paux.push(this.pop());
+            int valor = this.pop();
+            System.out.print(valor + " ");
+            paux.push(valor);
         }
         System.out.println("");
         while (!paux.pilaVacia()) {
-            push(paux.pop());
+            this.push(paux.pop());
         }
     }
 
-    public boolean Pilaordenada(int ingreso) {
-        if (pilaLlena()) return false;
+    public static Pila unirOrdenado(Pila p1, Pila p2) {
+        Pila copia1 = copiar(p1);
+        Pila copia2 = copiar(p2);
+        Pila resultado = new Pila(copia1.getTope() + copia2.getTope() + 2);
 
-        Pila aux = new Pila(tam);
-
-       
-        while (!pilaVacia() && verTope() < ingreso) {
-            aux.push(pop());
+        while (!copia1.pilaVacia() || !copia2.pilaVacia()) {
+            if (!copia1.pilaVacia() && (copia2.pilaVacia() || copia1.verTope() >= copia2.verTope())) {
+                resultado.push(copia1.pop());
+            } else {
+                resultado.push(copia2.pop());
+            }
         }
 
-       
-        push(ingreso);
+        return resultado;
+    }
 
+    public static Pila copiar(Pila original) {
+        Pila aux = new Pila(original.tam);
+        Pila copia = new Pila(original.tam);
+
+        // Copiamos a aux y a la copia
+        while (!original.pilaVacia()) {
+            int valor = original.pop();
+            aux.push(valor);
+        }
         while (!aux.pilaVacia()) {
-            push(aux.pop());
+            int valor = aux.pop();
+            original.push(valor); // restauramos
+            copia.push(valor);    // copiamos
         }
 
-        return true;
+        return copia;
     }
 }
-       
-    
-
